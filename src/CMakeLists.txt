@@ -94,7 +94,6 @@ ADD_LIBRARY(common_obj_static OBJECT ${common_src})
 SET_TARGET_PROPERTIES(common_obj_static PROPERTIES
     POSITION_INDEPENDENT_CODE ON
     COMPILE_DEFINITIONS "PAHO_MQTT_STATIC=1")
-ADD_EXECUTABLE(MQTTVersion-static MQTTVersion.c)
 ENDIF()
 
 IF (PAHO_BUILD_SHARED)
@@ -172,7 +171,6 @@ IF (PAHO_BUILD_STATIC)
     ENDFOREACH()
 
     IF (NOT PAHO_BUILD_SHARED)
-        TARGET_LINK_LIBRARIES(MQTTVersion-static paho-mqtt3a-static paho-mqtt3c-static ${LIBS_SYSTEM})
         INSTALL(TARGETS paho-mqtt3c-static paho-mqtt3a-static
             EXPORT eclipse-paho-mqtt-cTargets
             ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
